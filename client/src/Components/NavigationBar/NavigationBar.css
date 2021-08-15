@@ -1,0 +1,9 @@
+.login__link, .register__link{
+    text-decoration: none;
+    color: white;
+    font-weight: 500;
+}
+
+.login__link{
+    margin-right: 20px;
+}

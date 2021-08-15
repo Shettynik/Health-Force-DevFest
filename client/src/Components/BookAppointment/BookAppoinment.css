@@ -1,0 +1,16 @@
+.booking__spinner{
+    display: flex;
+    height: 50vh;
+    justify-content: center;
+    align-items: center;
+}
+
+.sub__heading{
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.booking__btn{
+    padding-left: 70px;
+    padding-right: 70px;
+}

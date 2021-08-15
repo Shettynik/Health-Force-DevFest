@@ -1,0 +1,19 @@
+.btn__color{
+    background-color: rgb(103, 110, 248);
+    color: white;
+    border: 1px solid rgb(74, 81, 211);
+    margin-right: 15px;
+    padding: 10px 40px;
+}
+
+.main__para{
+    font-size: 1.7rem;
+    font-family: 700;
+    font-weight: 700;
+    text-align: center;
+    text-shadow: 0px 2px 5px rgb(124 131 253);
+}
+
+.btn__color:hover{
+    background-color: rgb(75, 83, 240);
+}

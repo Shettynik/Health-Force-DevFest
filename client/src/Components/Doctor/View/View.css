@@ -1,0 +1,50 @@
+.profile__image{
+    width: 171px;
+    height: 180px;
+}
+
+.profile__subcontainer{
+    display: flex;
+}
+
+.profile__info{
+    margin: auto;
+    text-align: left;
+    padding-left: 20px;
+}
+
+.profile__name{
+    font-size: 1.5rem;
+    font-weight: 600;
+    line-height: 1.3px;
+}
+
+.profile__sub__info{
+    display: flex;
+    margin-top: 50px;
+    text-align: left;
+}
+
+@media (max-width: 768px){
+    .profile__image{
+        text-align: center;
+        width: 141px;
+        height: 150px;
+    }
+
+    .profile__name{
+        margin-top: 20px;
+        font-size: 1rem;
+        font-weight: 500;
+    }
+
+    .profile__specializations{
+        margin-top: 20px;
+    }
+
+    .profile__sub__info{
+        display: flex;
+        flex-direction: column;
+        text-align: center;
+    }
+}

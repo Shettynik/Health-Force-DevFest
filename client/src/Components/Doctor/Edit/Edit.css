@@ -1,0 +1,15 @@
+.file__input{
+    padding: 20px;
+}
+
+.view__form__group{
+    margin: 20px 0px;
+}
+
+.specializations__form{
+    display: flex;
+}
+
+.specializations__input{
+    width: 320px;
+}
