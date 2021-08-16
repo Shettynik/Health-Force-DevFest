@@ -36,8 +36,10 @@ const Edit = () => {
         console.log(sList)
     }
 
-    const removeSpecialization =  (specialization) => {
-        const output = sList.filter(s => s!==specialization);
+    const removeSpecialization = (specialization) => {
+        console.log(specialization)
+        const output = sList.filter(s => s !== specialization);
+        console.log("output",output)
         setsList(output);
     }
 
@@ -127,20 +129,21 @@ const Edit = () => {
                         <Form.Label>Address</Form.Label>
                         <Form.Control onChange={(e) => { setinfo({ ...info, address: e.target.value }) }} value={info.address} type="text" placeholder="Address" />
                     </Form.Group>
-                    <Form.Group className="view__form__group">
-                        <Form.Label>Specializations</Form.Label>
-                        <div className="specializations__form">
-                            {error && <p style={{ color: "red" }}>{error}</p>}
-                            <Form.Control className="specializations__input" onChange={(e) => { setspecialization(e.target.value) }} value={specialization} type="text" placeholder="Specializations" />
-                            <button onClick={addSpecializations} className="home__btn">Add</button>
-                        </div>
-                        {sList && sList.map((s) => (
-                            <button className="home__btn" style={{ marginRight: "10px", marginTop: "10px" }}>{s}<span onClick={() => removeSpecialization(s)} className="cross"> X</span></button>
-                        ))}
-                    </Form.Group>
-                    <button className="home__btn" onClick={handleSubmit}>Save</button>
-                </Form>
 
+                    
+                </Form>
+                <Form.Group className="view__form__group">
+                    <Form.Label>Specializations</Form.Label>
+                    <div className="specializations__form">
+                        {error && <p style={{ color: "red" }}>{error}</p>}
+                        <Form.Control className="specializations__input" onChange={(e) => { setspecialization(e.target.value) }} value={specialization} type="text" placeholder="Specializations" />
+                        <button onClick={addSpecializations} className="home__btn">Add</button>
+                    </div>
+                    {sList && sList.map((s) => (
+                        <button className="home__btn" style={{ marginRight: "10px", marginTop: "10px" }}>{s}<span className="cross" onClick={() => {removeSpecialization(s)}}> X</span></button>
+                    ))}
+                </Form.Group>
+                <button className="home__btn" onClick={handleSubmit}>Save</button>
             </Container>
         </>
     )

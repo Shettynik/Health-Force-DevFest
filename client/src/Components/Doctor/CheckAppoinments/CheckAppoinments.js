@@ -41,7 +41,7 @@ const CheckAppoinments = () => {
                 </Form>
             </Container>
             <Container>
-                {patients && 
+                {patients.length === 0 ? <p style={{color: "grey", textAlign: 'center', marginTop: "30px"}}>No patient has booked an appointment for the day</p> :
                 (<Table style={{marginTop: "30px"}}>
                     <thead>
                         <tr>

@@ -6,6 +6,10 @@ const PatientSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Appointment"
     },
+    docEmail:{
+        type: String,
+        required: true
+    },
     email:{
         type: String,
         required: true

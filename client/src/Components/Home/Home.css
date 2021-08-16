@@ -5,10 +5,31 @@
     padding: 8px;
     border-radius: 5px;
     text-transform: capitalize;
-    padding-left: 20px;
-    padding-right: 20px;
 }
 
 .home__btn:hover{
     background-color: rgb(69, 77, 212);
+}
+
+.home__card__image{
+    height: 10rem;
+}
+
+.home__card{
+    width: 18rem;
+}
+
+@media (max-width: 768px){
+    .home__card__image{
+        height: 10rem;
+    }
+
+    .home__card{
+        margin-top: 20px;
+        width: 18rem;
+    }
+
+    .card__row{
+        text-align: center;
+    }
 }

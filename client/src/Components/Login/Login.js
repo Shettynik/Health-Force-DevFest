@@ -63,7 +63,7 @@ const Login = ({ history }) => {
                 </Modal.Header>
                 <Modal.Body>
                     <Form onSubmit={handleSubmit}>
-                        <Form.Control style={{marginBottom: "5px"}} type="text" placeholder="Enter Email" name="email" value={email} onChange={(e) => { setemail(e.target.value) }} />
+                        <Form.Control style={{marginBottom: "5px"}} type="email" placeholder="Enter Email" name="email" value={email} onChange={(e) => { setemail(e.target.value) }} />
                         <Form.Control style={{marginBottom: "5px"}} type="password" placeholder="Enter Password" name="password" value={password} onChange={(e) => { setpassword(e.target.value) }} />
                         <div>
                             <Form.Check style={{marginBottom: "5px"}} name="user-type" value="patient" onChange={() => {setrole("patient")}} defaultchecked type="radio" label="Patient" />

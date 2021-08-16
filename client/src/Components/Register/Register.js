@@ -67,7 +67,7 @@ const Register = ({ history }) => {
                     <Form onSubmit={handleSubmit}>
                         <Form.Control style={{marginBottom: "5px"}} type="text" placeholder="Enter Firstname" value={firstname} onChange={(e) => { setfirstname(e.target.value) }} />
                         <Form.Control style={{marginBottom: "5px"}} type="text" placeholder="Enter Lastname" value={lastname} onChange={(e) => { setlastname(e.target.value) }} />
-                        <Form.Control style={{marginBottom: "5px"}} type="text" placeholder="Enter Email" value={email} onChange={(e) => { setemail(e.target.value) }} />
+                        <Form.Control style={{marginBottom: "5px"}} type="email" placeholder="Enter Email" value={email} onChange={(e) => { setemail(e.target.value) }} />
                         <Form.Control style={{marginBottom: "5px"}} type="password" placeholder="Enter Password" value={password} onChange={(e) => { setpassword(e.target.value) }} />
                         <div>
                             <Form.Check style={{marginBottom: "5px"}} name="user-type" value="patient" onChange={() => {settype("patient")}} type="radio" label="Patient" />

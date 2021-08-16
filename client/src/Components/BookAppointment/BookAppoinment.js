@@ -61,7 +61,7 @@ const BookAppoinment = ({ history }) => {
         axiosInstance.post('/appointment/book', { firstname, lastname, id: doctorId, slot, date }).then(() => {
             setfirstname("");
             setlastname("");
-            dispatch(setSuccessAlert({ successAlert: 'You have successfully booked an appointment! Please check your email!' }));
+            dispatch(setSuccessAlert({ successAlert: 'You have successfully booked an appointment!' }));
             setloading(false)
             setTimeout(() => {
                 dispatch(removeAlertMessage())
@@ -91,7 +91,7 @@ const BookAppoinment = ({ history }) => {
                 <Form>
                     <Form.Control style={{ marginBottom: "10px" }} placeholder="Firstname of the patient" type="text" value={firstname} required onChange={(e) => { setfirstname(e.target.value) }} />
                     <Form.Control style={{ marginBottom: "20px" }} placeholder="Lastname of the patient" type="text" value={lastname} onChange={(e) => { setlastname(e.target.value) }} />
-                    <Form.Control style={{ marginBottom: "20px" }} placeholder="Date" type="date" value={date} onChange={(e) => { setdate(e.target.value) }} />
+                    <Form.Control style={{ marginBottom: "20px" }} required placeholder="Date" type="date" value={date} onChange={(e) => { setdate(e.target.value) }} />
                     <h6 className="sub__heading">Select Your Preferred Slot</h6>
                     <div style={{textAlign: "center"}} >
                         <Row >
