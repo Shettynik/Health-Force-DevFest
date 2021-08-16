@@ -9,7 +9,8 @@ const app = express();
 app.use(express.json());
 app.use(express.static(path.join(__dirname, "client/build")));
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    // origin: ['http://localhost:3000'],
+    ortigin: ['https://ec2-3-238-174-201.compute-1.amazonaws.com/'],
     credentials: true
 }));
 app.use(cookieParser());
