@@ -35,6 +35,7 @@ const MyAppointments = () => {
                             <tr>
                                 <th>Name</th>
                                 <th>Patient Id</th>
+                                <th>Date</th>
                                 <th>Slot</th>
                             </tr>
                         </thead>
@@ -43,6 +44,7 @@ const MyAppointments = () => {
                                 <tr>
                                     <td style={{ textTransform: 'capitalize' }}>{appointment.firstname} {appointment.lastname}</td>
                                     <td>{appointment.patientId}</td>
+                                    <td>{appointment.date}</td>
                                     <td>
                                         {appointment.slot === 'thirdSlot' ? <h6 style={{ color: "blue" }}>Third Slot</h6> : appointment.slot === 'secondSlot' ? <h6 style={{ color: "yellow" }}>Second Slot</h6> : <h6 style={{ color: "green" }}>First Slot</h6>}
                                     </td>

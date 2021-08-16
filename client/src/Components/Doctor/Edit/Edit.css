@@ -13,3 +13,8 @@
 .specializations__input{
     width: 320px;
 }
+
+.cross{
+    color: red;
+    font-weight: 700;
+}

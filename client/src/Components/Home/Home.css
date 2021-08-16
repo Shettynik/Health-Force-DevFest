@@ -5,6 +5,8 @@
     padding: 8px;
     border-radius: 5px;
     text-transform: capitalize;
+    padding-left: 20px;
+    padding-right: 20px;
 }
 
 .home__btn:hover{

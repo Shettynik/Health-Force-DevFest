@@ -36,6 +36,11 @@ const Edit = () => {
         console.log(sList)
     }
 
+    const removeSpecialization =  (specialization) => {
+        const output = sList.filter(s => s!==specialization);
+        setsList(output);
+    }
+
     const displayImage = (e) => {
         console.log(e.target.files[0])
         setfile(URL.createObjectURL(e.target.files[0]))
@@ -57,8 +62,6 @@ const Edit = () => {
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
-            /* you can also use 'auto' behaviour
-               in place of 'smooth' */
         });
         axiosInstance.put('/doctor/edit', data).then(() => {
             console.log("Saved");
@@ -129,13 +132,13 @@ const Edit = () => {
                         <div className="specializations__form">
                             {error && <p style={{ color: "red" }}>{error}</p>}
                             <Form.Control className="specializations__input" onChange={(e) => { setspecialization(e.target.value) }} value={specialization} type="text" placeholder="Specializations" />
-                            <button onClick={addSpecializations} className="home__btn" style={{ paddingLeft: "20px", paddingRight: "20px" }}>Add</button>
+                            <button onClick={addSpecializations} className="home__btn">Add</button>
                         </div>
                         {sList && sList.map((s) => (
-                            <button className="home__btn" style={{ paddingLeft: "20px", paddingRight: "20px", marginRight: "10px", marginTop: "10px" }}>{s}</button>
+                            <button className="home__btn" style={{ marginRight: "10px", marginTop: "10px" }}>{s}<span onClick={() => removeSpecialization(s)} className="cross"> X</span></button>
                         ))}
                     </Form.Group>
-                    <button className="home__btn" style={{ paddingLeft: "20px", paddingRight: "20px" }} onClick={handleSubmit}>Save</button>
+                    <button className="home__btn" onClick={handleSubmit}>Save</button>
                 </Form>
 
             </Container>
