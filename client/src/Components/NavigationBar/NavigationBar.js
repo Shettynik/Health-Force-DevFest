@@ -51,9 +51,9 @@ const NavigationBar = () => {
     return (
         <>
             {!user.email ? (<Navbar style={{ backgroundColor: "#7C83FD" }}>
-                <Container>
+                <Container className="navigation__bar__main">
                     <Navbar.Brand href="/" style={{ fontSize: "1.6rem", fontWeight: "600", color: "white" }}>Health Force</Navbar.Brand>
-                    <div>
+                    <div className="navigation__links">
                         <Link className="login__link" to="/login?show=true">Login</Link>
                         <Link className="register__link" to="/register?show=true">Register</Link>
                     </div>
