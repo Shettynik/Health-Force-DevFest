@@ -4,6 +4,7 @@
     border: 1px solid rgb(74, 81, 211);
     padding: 8px;
     border-radius: 5px;
+    text-transform: capitalize;
 }
 
 .home__btn:hover{

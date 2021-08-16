@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Navbar, Container, Alert, Nav } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { setUserLogout, selectActiveUser } from '../../features/userSlice';
+import { setUserLogout, selectActiveUser, setActiveUser } from '../../features/userSlice';
 import { axiosInstance } from '../../AxiosSetup';
 import { getErrorAlert, getSucessAlert, removeAlertMessage, setSuccessAlert, setErrorAlert } from '../../features/alertSlice';
 import './NavigationBar.css';
@@ -32,6 +32,22 @@ const NavigationBar = () => {
     const successMessage = useSelector(getSucessAlert);
     const errorMessage = useSelector(getErrorAlert);
 
+    const checkUserLogIn = async () => {
+        axiosInstance.get("/auth/checkActiveUser").then((data) => {
+            console.log(data.data)
+            dispatch(setActiveUser({
+                email: data.data.email,
+                userType: data.data.role
+            }));
+        }).catch((error) => {
+            dispatch(setUserLogout());
+        })
+    }
+
+    useEffect(() => {
+        checkUserLogIn()
+    },[])
+
     return (
         <>
             {!user.email ? (<Navbar style={{ backgroundColor: "#7C83FD" }}>
@@ -44,8 +60,12 @@ const NavigationBar = () => {
                 </Container>
             </Navbar>) : (<Navbar style={{ backgroundColor: "#7C83FD" }}>
                 <Container>
-                    <Navbar.Brand href="/" style={{ fontSize: "1.6rem", fontWeight: "600", color: "white" }}>Health Force</Navbar.Brand>
-                    <Link to="/" className="register__link" onClick={handleLogout}>Logout</Link>
+                    <Navbar.Brand href="/home" style={{ fontSize: "1.6rem", fontWeight: "600", color: "white" }}>Health Force</Navbar.Brand>
+                    <div>
+                        {user.userType === "patient" && <Link to="/myAppointments" className="login__link" >My Appointments</Link>}
+                        <Link to="/" className="register__link" onClick={handleLogout}>Logout</Link>
+                    </div>
+
                 </Container>
             </Navbar>)}
             {user.userType === "doctor" && (<Navbar style={{ backgroundColor: "rgb(195 197 237)" }} variant="dark">

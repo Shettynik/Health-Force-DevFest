@@ -6,6 +6,7 @@ import { useLocation } from 'react-router-dom';
 import {  selectActiveUser } from '../../../features/userSlice';
 import { useSelector  } from 'react-redux';
 import { Link } from 'react-router-dom'; 
+import Avatar from './AvatarImage.jpg';
 
 const View = () => {
     const checkActiveUser = useSelector(selectActiveUser);
@@ -36,7 +37,8 @@ const View = () => {
         <>{info ? (
             <Container style={{ marginTop: "50px" }}>
                 <Container className="profile__subcontainer">
-                    <Image className="profile__image" src={info.image} roundedCircle />
+                    {info.image ? (<Image className="profile__image" src={info.image} roundedCircle />): <Image className="profile__image" src={Avatar} roundedCircle />}
+                    
                     <div className="profile__info">
                         <p className="profile__name">{info.firstname} {info.lastname}</p>
                         <p>{info.description}</p>
@@ -46,17 +48,19 @@ const View = () => {
                 <div className="profile__sub__info">
                     <div>
                         <h6 className="profile__specializations">Specializations</h6>
-                        {sList && sList.map((s) => (
-                            <p style={{ paddingLeft: "50px", paddingRight: "50px", margin: "5px" }} className="home__btn">{s}</p>
-                        )) }
+                        <ul>
+                        {sList ? sList.map((s) => (
+                            <li><p style={{fontFamily: "500"}}>{s}</p></li>
+                        )) : (<p>Nothing to display</p>) }
+                        </ul>
                     </div>
-                    <div>
+                    <div style={{marginLeft:"30px"}}>
                         <h6 className="profile__specializations">Address</h6>
                         <p>{info.address}</p>
                     </div>
                 </div>
 
-            </Container>): <p>Loading</p>}
+            </Container>): (<p>Loading</p>)}
         </>
     )
 }

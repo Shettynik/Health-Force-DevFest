@@ -16,7 +16,14 @@ const ScheduleAppoinments = () => {
         e.preventDefault();
         console.log(date, cmpDate)
         if (date < cmpDate) {
-            dispatch(setErrorAlert({ errorAlert: "Selected is inapporpriate" }));
+            dispatch(setErrorAlert({ errorAlert: "Selected date is inapporpriate" }));
+            setTimeout(() => {
+                dispatch(removeAlertMessage());
+            }, 7000)
+            return 
+        }
+        if(one<0 || two<0 || three<0){
+            dispatch(setErrorAlert({ errorAlert: "Number of appointments cannot be negative" }));
             setTimeout(() => {
                 dispatch(removeAlertMessage());
             }, 7000)
@@ -56,6 +63,7 @@ const ScheduleAppoinments = () => {
     return (
         <>
             <Container style={{ marginTop: "30px" }}>
+                <h2 style={{marginBottom: "30px"}}>Schedule Appointment</h2>
                 <Form onSubmit={handleSubmit}>
                     <Row>
                         <Col sm={6} md={2}><Form.Label>Select Date</Form.Label></Col>

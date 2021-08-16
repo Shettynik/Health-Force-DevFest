@@ -114,13 +114,13 @@ const isLoggedIn = async (req, res) => {
     try {
         const token = req.cookies.token;
         if(!token){
-            return res.send(null)
+            return res.status(401).send("You are not authorized")
         }
         const decoded = await jwt.verify(token, process.env.JWT_SECRET);
         if(!decoded){
-            return res.send(null)
+            return res.status(401).send("You are not authorized")
         }
-        res.json({
+        res.status(200).json({
             email:decoded.email,
             id: decoded.user,
             role: decoded.role

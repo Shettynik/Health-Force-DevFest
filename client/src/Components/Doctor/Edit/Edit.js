@@ -4,6 +4,7 @@ import { axiosInstance } from '../../../AxiosSetup';
 import { useDispatch } from 'react-redux';
 import { removeAlertMessage, setErrorAlert, setSuccessAlert } from '../../../features/alertSlice';
 import './Edit.css';
+import Avatar from './AvatarImage.jpg';
 
 const Edit = () => {
     const dispatch = useDispatch();
@@ -21,13 +22,13 @@ const Edit = () => {
     });
 
     const addSpecializations = () => {
-        const check = sList.filter(s => s===specialization)
-        if(check.length>0){
+        const check = sList.filter(s => s === specialization)
+        if (check.length > 0) {
             seterror("You have already added that to the list");
             setTimeout(() => {
                 seterror("")
-            },7000)
-            return 
+            }, 7000)
+            return
         }
         console.log(specialization)
         sList.push(specialization)
@@ -53,6 +54,12 @@ const Edit = () => {
         console.log(sList)
         data.append("specializations", sList);
         console.log(data)
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+            /* you can also use 'auto' behaviour
+               in place of 'smooth' */
+        });
         axiosInstance.put('/doctor/edit', data).then(() => {
             console.log("Saved");
             dispatch(setSuccessAlert({ successAlert: "You have successfully saved your information" }));
@@ -70,9 +77,9 @@ const Edit = () => {
 
     const getInfo = async () => {
         axiosInstance.get('/doctor/view').then((data) => {
-            console.log("information",data.data)
+            console.log("information", data.data)
             console.log(data.data.specializations[0])
-            if(data.data.specializations[0]){
+            if (data.data.specializations[0]) {
                 const array = data.data.specializations[0].split(',')
                 setsList(array)
             }
@@ -90,10 +97,11 @@ const Edit = () => {
 
     return (
         <>
-            <Container style={{marginTop:"50px"}}>
-                <Form onSubmit={handleSubmit}>
+            <Container style={{ marginTop: "50px" }}>
+                <Form>
                     <div>
-                        <Image src={file} style={{ width: "171px", height: "180px" }} roundedCircle />
+                        {file ? <Image src={file} style={{ width: "171px", height: "180px" }} roundedCircle /> : <Image src={Avatar} style={{ width: "171px", height: "180px" }} roundedCircle />}
+
                         <input className="file__input" type="file" name="image" onChange={(e) => { displayImage(e) }} />
                     </div>
                     <Form.Group className="view__form__group">
@@ -119,16 +127,17 @@ const Edit = () => {
                     <Form.Group className="view__form__group">
                         <Form.Label>Specializations</Form.Label>
                         <div className="specializations__form">
-                            {error && <p style={{color: "red"}}>{error}</p>}
+                            {error && <p style={{ color: "red" }}>{error}</p>}
                             <Form.Control className="specializations__input" onChange={(e) => { setspecialization(e.target.value) }} value={specialization} type="text" placeholder="Specializations" />
-                            <button onClick={addSpecializations} className="home__btn" style={{paddingLeft:"20px", paddingRight:"20px"}}>Add</button>
+                            <button onClick={addSpecializations} className="home__btn" style={{ paddingLeft: "20px", paddingRight: "20px" }}>Add</button>
                         </div>
                         {sList && sList.map((s) => (
-                            <button className="home__btn" style={{paddingLeft:"20px", paddingRight:"20px", marginRight: "10px", marginTop: "10px"}}>{s}</button>
+                            <button className="home__btn" style={{ paddingLeft: "20px", paddingRight: "20px", marginRight: "10px", marginTop: "10px" }}>{s}</button>
                         ))}
                     </Form.Group>
-                    <button className="home__btn" style={{paddingLeft:"20px", paddingRight:"20px"}} type="submit">Save</button>
+                    <button className="home__btn" style={{ paddingLeft: "20px", paddingRight: "20px" }} onClick={handleSubmit}>Save</button>
                 </Form>
+
             </Container>
         </>
     )

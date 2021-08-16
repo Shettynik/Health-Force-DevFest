@@ -5,24 +5,29 @@
 
 .profile__subcontainer{
     display: flex;
+    align-items: center;
 }
 
 .profile__info{
-    margin: auto;
     text-align: left;
     padding-left: 20px;
 }
 
 .profile__name{
-    font-size: 1.5rem;
+    font-size: 2.3rem;
     font-weight: 600;
-    line-height: 1.3px;
+    line-height: 13px;
 }
 
 .profile__sub__info{
     display: flex;
     margin-top: 50px;
     text-align: left;
+}
+
+.profile__specializations{
+    font-size: 1.3rem;
+    font-weight: 500;
 }
 
 @media (max-width: 768px){
@@ -36,6 +41,7 @@
         margin-top: 20px;
         font-size: 1rem;
         font-weight: 500;
+        line-height: 2px;
     }
 
     .profile__specializations{

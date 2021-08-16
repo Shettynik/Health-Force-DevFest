@@ -29,22 +29,22 @@ const bookAppointmentController = async (req, res) => {
         }
 
         const uniqueCode = Math.floor(Math.random()*10000);
-        const addPatient = new Patient({ firstname, lastname, appointmentId: Date[0]._id, slot, patientId: uniqueCode });
+        const addPatient = new Patient({email:req.email, firstname, lastname, appointmentId: Date[0]._id, slot, patientId: uniqueCode, date });
         Date[0].patients.push(addPatient);
         Date[0].save()
         addPatient.save()
 
-        const message = `<h1>Thanks for taking an appointment</h1>
-        <p>You have successfully booked yourself in the ${slot}</p>
-        <p>Your verification code is ${uniqueCode}. Please do not share this with anyone</p>`
+        // const message = `<h1>Thanks for taking an appointment</h1>
+        // <p>You have successfully booked yourself in the ${slot}</p>
+        // <p>Your verification code is ${uniqueCode}. Please do not share this with anyone</p>`
 
-        await sendEmail({
-            to: req.email,
-            subject: "Appointment confirmation",
-            text: message
-        });
+        // await sendEmail({
+        //     to: req.email,
+        //     subject: "Appointment confirmation",
+        //     text: message
+        // });
 
-        res.status(200).send("Your appointment has been booked successfully! Please check your email for confirmation!");
+        res.status(200).send("Your appointment has been booked successfully!");
     } catch (error) {
         console.log(error)
         res.status(500).json("Something went wrong! Please check again!")
@@ -61,10 +61,21 @@ const getBookedAppointments = async (req, res) => {
         const getAppointment = appointments.filter(appointment => appointment.date === date);
         // console.log(getAppointment[0]._id)
         const patients = await Patient.find()
-        console.log(patients)
-        const patientsForTheDay = patients.filter(patient => patient.appointmentId === getAppointment[0]._id);
-        // console.log("PATIENTS",patientsForTheDay)
+        console.log("PATIENTS",patients)
+        const patientsForTheDay = patients.filter(patient => patient.date === date);
+        console.log("PATIENTS",patientsForTheDay)
         res.status(200).json(patientsForTheDay)
+    } catch (error) {
+        console.log(error)
+        res.status(500).json("Something went wrong! Please check again!")
+    }
+}
+
+const getMyAppointmentsController = async (req, res) => {
+    try {
+        const myAppointments = await Patient.find({email: req.email});
+        console.log(myAppointments)
+        res.status(200).json(myAppointments);
     } catch (error) {
         console.log(error)
         res.status(500).json("Something went wrong! Please check again!")
@@ -73,5 +84,6 @@ const getBookedAppointments = async (req, res) => {
 
 module.exports = {
     bookAppointmentController,
-    getBookedAppointments
+    getBookedAppointments,
+    getMyAppointmentsController
 }

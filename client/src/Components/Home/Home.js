@@ -29,7 +29,7 @@ const Home = () => {
                             <Card.Body>
                                 <Card.Title>{doctor.firstname} {doctor.lastname}</Card.Title>
                                 <Card.Text>
-                                    {doctor.description}
+                                    {doctor.description.slice(0,70)}
                                 </Card.Text>
                                 <button className="home__btn" style={{ marginRight: "5px" }}><Link to={checkActiveUser ? `/bookappoinment?doctor=${doctor._id}` : '/login?show=true'} style={{ textDecoration: "None", color: "white" }}>Book An Appointment</Link></button>
                                 <button className="home__btn"><Link style={{ textDecoration: "None", color: "white", padding: "3px" }} to={`/doctor/view?doctor=${doctor._id}`} >View</Link></button>

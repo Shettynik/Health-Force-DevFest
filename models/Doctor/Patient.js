@@ -6,6 +6,10 @@ const PatientSchema = new Schema({
         type: Schema.Types.ObjectId,
         ref: "Appointment"
     },
+    email:{
+        type: String,
+        required: true
+    },
     firstname:{
         type: String,
         required: true
@@ -18,6 +22,10 @@ const PatientSchema = new Schema({
         required: true
     },
     slot:{
+        type: String,
+        required: true
+    },
+    date:{
         type: String,
         required: true
     }

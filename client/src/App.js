@@ -10,6 +10,7 @@ import Edit from './Components/Doctor/Edit/Edit';
 import CheckAppoinments from './Components/Doctor/CheckAppoinments/CheckAppoinments';
 import ScheduleAppoinments from './Components/Doctor/ScheduleAppoinments/ScheduleAppoinments';
 import Main from './Components/Main/Main';
+import MyAppointments from './Components/MyAppointments/MyAppointments';
 // import Footer from './Components/Footer/Footer';
 
 const App = () => {
@@ -23,6 +24,7 @@ const App = () => {
           <Route path="/register" exact component={Register} />
           <Route path="/home" exact component={Home} />
           <Route path="/bookappoinment" exact component={BookAppoinment} />
+          <Route path="/myAppointments" exact component={MyAppointments} />
           <Route path="/doctor/view" exact component={View} />
           <Route path="/doctor/edit" exact component={Edit} />
           <Route path="/doctor/checkAppoinment" exact component={CheckAppoinments} />
